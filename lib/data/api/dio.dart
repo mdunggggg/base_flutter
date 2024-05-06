@@ -8,7 +8,6 @@ import 'api_path.dart';
 import 'dio_logger.dart';
 import 'interceptor.dart';
 
-
 @injectable
 class BaseDio {
   Dio? _instance;
@@ -50,24 +49,9 @@ class BaseDio {
     return dio;
   }
 
-  Future<String> _getNewToken() async {
-    try {
-      final payload = {
-        'refresh':
-        '${AppSharedPreference.instance.getValue(PrefKeys.tokenRefresh)}',
-      };
-      final res = await Dio(BaseOptions(headers: headers))
-          .post('$baseURL/${Api.refreshToken}', data: payload);
-      return res.data['access'];
-    } catch (e) {
-      throw Exception('err : $e');
-    }
-  }
-
   void _saveTokenToStorage(String token) {
     AppSharedPreference.instance.setValue(PrefKeys.token, token);
   }
-
 
   static String baseURL = Api.baseUrl;
 
@@ -91,7 +75,8 @@ class BaseDio {
     return _dio().patch('$baseURL/$path', data: data);
   }
 
-  Future<dynamic> getWithUrl(String path, {Map<String, dynamic>? data, Options? options}) async {
+  Future<dynamic> getWithUrl(String path,
+      {Map<String, dynamic>? data, Options? options}) async {
     return _dio().get(
       path,
       queryParameters: data,
@@ -99,7 +84,8 @@ class BaseDio {
     );
   }
 
-  Future<dynamic> postWithUrl(String path, {Object? data, Options? options}) async {
+  Future<dynamic> postWithUrl(String path,
+      {Object? data, Options? options}) async {
     return _dio().post(
       path,
       data: data,
@@ -107,7 +93,8 @@ class BaseDio {
     );
   }
 
-  Future<dynamic> putWithUrl(String path, {Object? data, Options? options}) async {
+  Future<dynamic> putWithUrl(String path,
+      {Object? data, Options? options}) async {
     return _dio().put(
       path,
       data: data,
@@ -115,7 +102,8 @@ class BaseDio {
     );
   }
 
-  Future<dynamic> deleteWithUrl(String path, {Object? data, Options? options}) async {
+  Future<dynamic> deleteWithUrl(String path,
+      {Object? data, Options? options}) async {
     return _dio().delete(
       path,
       data: data,
@@ -123,7 +111,8 @@ class BaseDio {
     );
   }
 
-  Future<dynamic> patchWithUrl(String path, {Object? data, Options? options}) async {
+  Future<dynamic> patchWithUrl(String path,
+      {Object? data, Options? options}) async {
     return _dio().patch(
       path,
       data: data,
