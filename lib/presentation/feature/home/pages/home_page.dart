@@ -1,9 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_clean_architecture/presentation/feature/home/domain/use_case/person_create_use_case.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../di/di.dart';
-import '../domain/entities/person_entity.dart';
+import '../bloc/home_cubit.dart';
+import '../bloc/home_state.dart';
 
 @RoutePage()
 class HomePage extends StatefulWidget {
@@ -15,26 +16,36 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
-  final createUseCase = getIt<PersonCreateUseCase>();
+  final myBloc = getIt.get<HomeCubit>();
 
   @override
   void initState() {
-    createUseCase(PersonCreateInput(payload: const PersonEntity(name: 'John Doe', age: 30, address: 'Jakarta')))
-      .then((value) {
-        print(value.response.data?.name);
-      });
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Home'),
+    return BlocProvider(
+      create: (context) => myBloc..createPerson(),
+      child: Scaffold(
+          appBar: AppBar(
+            title: const Text('Home'),
+          ),
+          body: BlocBuilder<HomeCubit, HomeState>(
+            builder: (BuildContext context, HomeState state) {
+              if(state.isLoading){
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+              return ScaffoldMessenger(
+                child: Text(
+                  state.isFailure ? 'Failed' : 'Success',
+                )
+              );
+            },
+          )
       ),
-      body: const Center(
-        child: Text('Home'),
-      )
     );
   }
 }
