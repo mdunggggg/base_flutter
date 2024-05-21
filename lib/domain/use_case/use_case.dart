@@ -7,10 +7,3 @@ abstract class BaseUseCase<Input extends BaseInput, Output> {
   Output buildUseCase(Input input);
 }
 
-abstract class BaseUseCaseNoInput<Output> {
-  Future<Output> execute();
-}
-
-abstract class BaseUseCaseInput<Input, Output> {
-  Future<Output> execute(Input input);
-}
