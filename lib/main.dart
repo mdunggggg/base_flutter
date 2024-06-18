@@ -13,7 +13,7 @@ Future<void> main() async {
     await AppSharedPreference.instance.initSharedPreferences();
     await AppInitializer(AppConfig.getInstance()).init();
     _runMyApp();
-  }, _reportError);
+  }, _reportError,);
 }
 
 Future<void> _runMyApp() async {
