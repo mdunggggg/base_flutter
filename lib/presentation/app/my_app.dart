@@ -36,6 +36,7 @@ class _MyAppState extends State<MyApp> {
   }
 
   List<PageRouteInfo> _mapRouteToPageRouteInfo() {
+    AppSharedPreference.instance.setValue(PrefKeys.token, "asd");
     final token = AppSharedPreference.instance.getValue(PrefKeys.token);
     if (token == null) {
       return [const WelcomeRoute()];

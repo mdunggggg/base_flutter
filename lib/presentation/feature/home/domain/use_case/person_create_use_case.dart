@@ -28,6 +28,17 @@ class PersonCreateUseCase
     };
 
     final res = await _personRepository.create(payload: payload);
+    // return PersonCreateOutput(
+    //   response: BaseResponseModel(
+    //     code: 200,
+    //     message: 'Success',
+    //     data: const PersonEntity(
+    //       name: "Dung",
+    //       age: 12,
+    //       address: "Nam Dinh",
+    //     )
+    //   ),
+    // );
     final dataEntity = _personEntityMapper.mapToEntity(res.data);
     final output = PersonCreateOutput(
       response: BaseResponseModel(

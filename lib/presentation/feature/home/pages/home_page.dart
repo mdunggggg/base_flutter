@@ -1,10 +1,12 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_clean_architecture/presentation/feature/home/domain/entities/person_entity.dart';
+import 'package:flutter_clean_architecture/presentation/feature/home/pages/bloc/home_bloc.dart';
 
+import '../../../blocs/bloc_state.dart';
 import '../../../di/di.dart';
-import '../bloc/home_cubit.dart';
-import '../bloc/home_state.dart';
+
 
 @RoutePage()
 class HomePage extends StatefulWidget {
@@ -16,7 +18,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
-  final myBloc = getIt.get<HomeCubit>();
+  final myBloc = getIt.get<HomeBloc>();
 
   @override
   void initState() {
@@ -31,18 +33,32 @@ class _HomePageState extends State<HomePage> {
           appBar: AppBar(
             title: const Text('Home'),
           ),
-          body: BlocBuilder<HomeCubit, HomeState>(
-            builder: (BuildContext context, HomeState state) {
-              if(state.isLoading){
+          body: BlocBuilder<HomeBloc, BlocState<PersonEntity>>(
+            builder: (context, state) {
+              if (state.status == Status.loading) {
                 return const Center(
                   child: CircularProgressIndicator(),
                 );
+              } else if (state.status == Status.success) {
+                return Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text('Name: ${state.data!.name}'),
+                      Text('Age: ${state.data!.age}'),
+                      Text('Address: ${state.data!.address}'),
+                    ],
+                  ),
+                );
+              } else if (state.status == Status.error) {
+                return Center(
+                  child: Text(state.msg),
+                );
+              } else {
+                return const Center(
+                  child: Text('Welcome'),
+                );
               }
-              return ScaffoldMessenger(
-                child: Text(
-                  state.isFailure ? 'Failed' : 'Success',
-                )
-              );
             },
           )
       ),

@@ -32,13 +32,13 @@ extension extNum on num {
   Widget get height => SizedBox(height: toDouble());
   Widget get width => SizedBox(width: toDouble());
 
-  EdgeInsets get padingTop => EdgeInsets.only(top: toDouble());
-  EdgeInsets get padingLeft => EdgeInsets.only(left: toDouble());
-  EdgeInsets get padingRight => EdgeInsets.only(right: toDouble());
-  EdgeInsets get padingBottom => EdgeInsets.only(bottom: toDouble());
-  EdgeInsets get padingVer => EdgeInsets.symmetric(vertical: toDouble());
-  EdgeInsets get padingHor => EdgeInsets.symmetric(horizontal: toDouble());
-  EdgeInsets get pading => EdgeInsets.all(toDouble());
+  EdgeInsets get paddingTop => EdgeInsets.only(top: toDouble());
+  EdgeInsets get paddingLeft => EdgeInsets.only(left: toDouble());
+  EdgeInsets get paddingRight => EdgeInsets.only(right: toDouble());
+  EdgeInsets get paddingBottom => EdgeInsets.only(bottom: toDouble());
+  EdgeInsets get paddingVer => EdgeInsets.symmetric(vertical: toDouble());
+  EdgeInsets get paddingHor => EdgeInsets.symmetric(horizontal: toDouble());
+  EdgeInsets get padding => EdgeInsets.all(toDouble());
   Duration get milliseconds => Duration(milliseconds: toInt());
   Duration get seconds => Duration(seconds: toInt());
 
@@ -56,3 +56,7 @@ extension extNum on num {
   }
 }
 
+extension extNumOrNull on num? {
+  num get validator => this ?? 0;
+
+}
