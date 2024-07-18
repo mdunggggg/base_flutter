@@ -8,9 +8,10 @@ class PersonModel with _$PersonModel {
   const PersonModel._();
 
   const factory PersonModel({
-    @Default('') String name,
-    @Default(0) int age,
-    @Default('') String address,
+    String? name,
+    int? age,
+    String? address,
+    String? dateOfBirth,
   }) = _PersonModel;
 
   factory PersonModel.fromJson(Map<String, dynamic> json) =>

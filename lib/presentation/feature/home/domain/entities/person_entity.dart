@@ -9,5 +9,6 @@ class PersonEntity with _$PersonEntity {
     @Default('') String name,
     @Default(0) int age,
     @Default('') String address,
+    DateTime? dateOfBirth,
   }) = _PersonEntity;
 }

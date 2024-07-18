@@ -53,6 +53,7 @@ class _HomePageState extends State<HomePage> {
               } else if (state.status == Status.error) {
                 return Center(
                   child: Text(state.msg),
+
                 );
               } else {
                 return const Center(

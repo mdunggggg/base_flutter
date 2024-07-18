@@ -11,7 +11,7 @@ class PersonEntityMapper extends BaseDataMapper<PersonModel, PersonEntity>{
       name: data?.name ?? '',
       age: data?.age ?? 0,
       address: data?.address ?? '',
+      dateOfBirth: DateTime.tryParse(data?.dateOfBirth ?? '') ?? DateTime.now(),
     );
   }
-
 }
