@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 extension extContext on BuildContext{
   // AppLocalizations get lang => AppLocalizations.of(this)!;
@@ -25,4 +26,27 @@ extension extContext on BuildContext{
       FocusScope.of(this).unfocus();
     }
   }
+
+  Future bottomSheet(
+      Widget child, {
+        bool isScrollControlled = true,
+        bool useSafeArea = true,
+      }) async {
+    return showModalBottomSheet(
+      context: this,
+      builder: (context) => child,
+      isScrollControlled: isScrollControlled,
+      useSafeArea: useSafeArea,
+      backgroundColor: Colors.transparent,
+      //shape: RoundedRectangleBorder(borderRadius: 20.radiusTop),
+    );
+  }
+
+  Future dialog(Widget child) async {
+    return showDialog(
+      context: this,
+      builder: (context) => child,
+    );
+  }
+
 }

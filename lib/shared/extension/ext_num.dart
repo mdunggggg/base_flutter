@@ -21,7 +21,6 @@ extension extNum on num {
   BorderRadius get radius => BorderRadius.circular(toDouble());
   BorderRadius get radiusTop =>
       BorderRadius.vertical(top: Radius.circular(toDouble()));
-
   BorderRadius get radiusBottom =>
       BorderRadius.vertical(bottom: Radius.circular(toDouble()));
   BorderRadius get radiusLeft =>
