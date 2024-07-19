@@ -1,11 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_clean_architecture/data/api/api_path.dart';
 import 'package:flutter_clean_architecture/data/model/response.dart';
-import 'package:flutter_clean_architecture/presentation/feature/home/data/model/person_model.dart';
+import 'package:flutter_clean_architecture/data/model/person_model.dart';
 import 'package:injectable/injectable.dart';
 
-import '../../../../../data/api/dio.dart';
-import '../../domain/repository/person_repository.dart';
+import '../api/dio.dart';
+import '../../domain/repositories/person_repository.dart';
 
 @LazySingleton(as: PersonRepository)
 class PersonRepositoryImpl implements PersonRepository {

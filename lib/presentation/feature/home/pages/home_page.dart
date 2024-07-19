@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_clean_architecture/presentation/feature/home/domain/entities/person_entity.dart';
+import 'package:flutter_clean_architecture/domain/entities/person_entity.dart';
 import 'package:flutter_clean_architecture/presentation/feature/home/pages/bloc/home_bloc.dart';
 
 import '../../../blocs/bloc_state.dart';

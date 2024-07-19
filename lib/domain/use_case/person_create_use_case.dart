@@ -1,12 +1,12 @@
 import 'package:flutter_clean_architecture/domain/use_case/future_use_case.dart';
-import 'package:flutter_clean_architecture/presentation/feature/home/data/mapper/person_entity_mapper.dart';
-import 'package:flutter_clean_architecture/presentation/feature/home/domain/entities/person_entity.dart';
-import 'package:flutter_clean_architecture/presentation/feature/home/domain/repository/person_repository.dart';
+import 'package:flutter_clean_architecture/data/mapper/person_entity_mapper.dart';
+import 'package:flutter_clean_architecture/domain/entities/person_entity.dart';
+import 'package:flutter_clean_architecture/domain/repositories/person_repository.dart';
 import 'package:injectable/injectable.dart';
 
-import '../../../../../data/model/response.dart';
-import '../../../../../domain/use_case/io/input.dart';
-import '../../../../../domain/use_case/io/output.dart';
+import '../../data/model/response.dart';
+import 'io/input.dart';
+import 'io/output.dart';
 
 @injectable
 class PersonCreateUseCase

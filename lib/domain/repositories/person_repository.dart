@@ -1,6 +1,6 @@
-import 'package:flutter_clean_architecture/presentation/feature/home/data/model/person_model.dart';
+import 'package:flutter_clean_architecture/data/model/person_model.dart';
 
-import '../../../../../data/model/response.dart';
+import '../../data/model/response.dart';
 
 abstract class PersonRepository {
   Future<BaseResponseModel<List<PersonModel>>> getPersons();
